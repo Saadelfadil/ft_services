@@ -1,11 +1,7 @@
-FROM alpine
-RUN apk update \
-&& apk add nginx \
-&& mkdir /run/nginx \
-&& echo "<h1>Hello world!</h1>" > /var/www/localhost/htdocs/index.html;
-COPY  nginx-selfsigned.crt /etc/ssl 
-COPY  nginx-selfsigned.key /etc/ssl
-ADD default.conf /etc/nginx/conf.d/default.conf
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-EXPOSE 80 443
-ENTRYPOINT ["nginx"]
+FROM alpine:latest
+
+ADD https://raw.githubusercontent.com/Saadelfadil/index.html/master/index.html /usr/share/nginx/html/
+
+RUN chmod +r /usr/share/nginx/html/index.html
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -11,7 +11,7 @@ grep '/ftp/' /etc/passwd | cut -d':' -f1 | xargs -n1 deluser
 # user|password|/home/user/dir|10000
 #OR
 # user|password||10000
-
+ 
 #Default user 'ftp' with password 'alpineftp'
 
 if [ -z "$USERS" ]; then
