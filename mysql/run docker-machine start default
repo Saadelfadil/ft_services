@@ -1,3 +1,0 @@
-run docker-machine start default
-docker-machine env default
-eval $(docker-machine env default) whenever u start a new terminal
