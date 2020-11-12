@@ -2,6 +2,7 @@ apk add openrc --no-cache
 mkdir /run/openrc
 touch /run/openrc/softlevel
 rc-status
+
 apk update
 apk upgrade
 apk add nginx
