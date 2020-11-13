@@ -1,9 +1,11 @@
 FROM alpine:latest
 
-
-RUN apk add mariadb openrc
+RUN apk update openrc
+RUN apk add mysql mysql-client
 COPY my.cnf /etc/mysql/my.cnf
 COPY ms.sh /
-RUN   sh ms.sh
+# RUN   sh ms.sh
 
-EXPOSE 5000
+EXPOSE 3306
+CMD sh ms.sh
+# ENTRYPOINT  ["sh ms.sh"]

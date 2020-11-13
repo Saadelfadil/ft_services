@@ -8,13 +8,11 @@ RUN   apk update \
 &&    apk add gnupg \
 &&    apk add dpkg \
 &&    apk add supervisor
-ADD https://raw.githubusercontent.com/Saadelfadil/index.html/master/index.html /var/lib/nginx/html/
-RUN chmod +r /var/lib/nginx/html/index.html
 COPY  nginx-selfsigned.crt /etc/ssl
 COPY  nginx-selfsigned.key /etc/ssl
 COPY nginx.conf /etc/nginx/
 COPY supervisord.conf /
-
+COPY wp-config.php /www
 COPY  wp.sh /
 RUN   sh wp.sh
 

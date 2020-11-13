@@ -19,3 +19,5 @@ apk add lighttpd php7-common php7-iconv php7-json php7-gd php7-curl php7-xml php
 wget http://wordpress.org/latest.tar.gz
 tar -xzvf latest.tar.gz
 mv wordpress/* .
+mv wp-config.php /www
+rm /www/wp-config-sample.php

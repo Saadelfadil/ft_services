@@ -15,7 +15,8 @@ spec:
       spec:
          containers:
          - name: wp-containers
-           image: nginx:latest
+           image: wp
+           imagePullPolicy: Never
            ports:
            - containerPort: 80
 

@@ -3,10 +3,10 @@ chown -R mysql:mysql /run/mysqld
 chown -R mysql:mysql /var/lib/mysql
 mysql_install_db --user=root > /dev/null
 
-MYSQL_ROOT_PASSWORD=13371337
-MYSQL_DATABASE=${MYSQL_DATABASE:-"db"}
-MYSQL_USER=${MYSQL_USER:-"db"}
-MYSQL_PASSWORD=${MYSQL_PASSWORD:-"13371337"}
+MYSQL_ROOT_PASSWORD=sel-fadi
+MYSQL_DATABASE=${MYSQL_DATABASE:-"sel-fadi-db"}
+MYSQL_USER=${MYSQL_USER:-"sel-fadi"}
+MYSQL_PASSWORD=${MYSQL_PASSWORD:-"sel-fadi"}
 
 tfile=`mktemp`
 cat << EOF > $tfile
