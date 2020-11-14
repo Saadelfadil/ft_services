@@ -9,6 +9,37 @@ spec:
     app: mysql
   clusterIP: 10.96.0.50
 
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv-claimm
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
 ---
 
 apiVersion: apps/v1
@@ -32,7 +63,7 @@ spec:
         imagePullPolicy: Never
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: sel-fadi
+          value: password
         ports:
         - containerPort: 3306
           name: mysql
@@ -43,3 +74,5 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+
+

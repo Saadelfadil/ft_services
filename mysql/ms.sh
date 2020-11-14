@@ -12,11 +12,12 @@ mysql_install_db --user=mysql --datadir=/app/mysql
 pkill mysql
 pkill mysqld
 service mariadb restart
-echo "CREATE USER IF NOT EXISTS 'sel-fadi'@'192.168.99.114' IDENTIFIED BY 'sel-fadi';" | mysql -uroot
+echo "CREATE USER IF NOT EXISTS 'sel-fadi'@'localhost' IDENTIFIED BY 'sel-fadi';" | mysql -uroot
 echo "CREATE DATABASE sel_fadi_db;" | mysql -uroot
-echo "grant all privileges on *.* TO 'sel-fadi'@'192.168.99.114' identified by 'sel-fadi';" | mysql -uroot
+echo "grant all privileges on *.* TO 'sel-fadi'@'localhost' identified by 'sel-fadi';" | mysql -uroot
 echo "flush privileges;" | mysql -uroot
 rc-service mariadb restart
 mysql -u root
 
 # sleep 5
+cat 
