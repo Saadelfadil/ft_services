@@ -18,8 +18,7 @@ spec:
            image: wp
            imagePullPolicy: Never
            ports:
-           - containerPort: 80
-           - containerPort: 443
+           - containerPort: 5050
 
 ---
 
@@ -33,4 +32,4 @@ spec:
    type: LoadBalancer
    ports:
    - port: 5050
-     targetPort: 80
+     targetPort: 5050

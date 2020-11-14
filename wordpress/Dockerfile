@@ -16,5 +16,5 @@ COPY supervisord.conf /
 COPY  wp.sh /
 RUN   sh wp.sh
 
-EXPOSE 80 443
+EXPOSE 5050
 ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/supervisord.conf"]

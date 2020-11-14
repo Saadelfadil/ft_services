@@ -18,7 +18,9 @@ spec:
            image: nginx
            imagePullPolicy: Never
            ports:
-           - containerPort: 8080
+           - containerPort: 80
+           - containerPort: 443
+           - containerPort: 22
 
 ---
 
@@ -32,4 +34,8 @@ spec:
    type: LoadBalancer
    ports:
    - port: 80
-     targetPort: 8080
+     targetPort: 80
+   - port: 443
+     targetPort: 443
+   - port: 22
+     targetPort: 22  

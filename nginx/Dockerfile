@@ -8,5 +8,5 @@ COPY  nginx-selfsigned.crt /etc/ssl
 COPY  nginx-selfsigned.key /etc/ssl
 ADD default.conf /etc/nginx/conf.d/default.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-# EXPOSE 80 443
+EXPOSE 80 443 22
 ENTRYPOINT ["nginx"]
