@@ -1,9 +1,8 @@
 FROM alpine:latest
 RUN apk update \
 && apk add nginx \
-&& mkdir /run/nginx
-# && echo "<h1>Hello world!</h1>" > /var/www/localhost/htdocs/index.html;
-ADD https://raw.githubusercontent.com/Saadelfadil/index.html/master/index.html /var/www/localhost/htdocs/
+&& mkdir /run/nginx \
+&& echo "<h1>Hello world!</h1>" > /var/www/localhost/htdocs/index.html;
 RUN chmod +r /var/www/localhost/htdocs/index.html
 COPY  nginx-selfsigned.crt /etc/ssl 
 COPY  nginx-selfsigned.key /etc/ssl

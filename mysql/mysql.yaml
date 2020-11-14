@@ -27,7 +27,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql-containers
+      - image: mysql
         name: mysql
         imagePullPolicy: Never
         env:
