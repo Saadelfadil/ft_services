@@ -29,7 +29,7 @@ define( 'DB_USER', 'sel_fadi' );
 define( 'DB_PASSWORD', 'sel_fadi' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', '10.96.0.50' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
