@@ -18,6 +18,6 @@ echo "grant all privileges on *.* TO 'sel-fadi'@'localhost' identified by 'sel-f
 echo "flush privileges;" | mysql -uroot
 rc-service mariadb restart
 mysql -u root
-
+tail -f /dev/null
+tail -F /dev/null
 # sleep 5
-cat 
