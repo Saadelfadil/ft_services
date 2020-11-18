@@ -9,7 +9,6 @@ spec:
     app: mysql
   clusterIP: 10.96.0.50
 
-
 ---
 
 apiVersion: v1
