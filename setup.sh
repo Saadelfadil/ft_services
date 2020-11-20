@@ -25,16 +25,17 @@ kubectl create -f srcs/nginx/nginx.yaml
 echo "\n"
 
 echo "${Cyan}--------------------------- Mysql --------------------------------${Color_Off}"
-docker build --tag wp srcs/wordpress
-kubectl create -f srcs/wordpress/wordpress.yaml
-echo "\n"
-
-echo "${Blue}------------------------- Phpmyadmin -----------------------------${Color_Off}"
 docker build --tag mysql srcs/mysql 
 kubectl create -f srcs/mysql/mysql.yaml
 echo "\n"
 
-echo "${Yellow}-------------------------- Wordpress -----------------------------${Color_Off}"
+echo "${Blue}------------------------- Phpmyadmin -----------------------------${Color_Off}"
 docker build -t pma srcs/phpmyadmin
 kubectl create -f srcs/phpmyadmin/phpmyadmin.yaml
 echo "\n"
+
+echo "${Yellow}-------------------------- Wordpress -----------------------------${Color_Off}"
+docker build --tag wp srcs/wordpress
+kubectl create -f srcs/wordpress/wordpress.yaml
+echo "\n"
+minikube dashboard
