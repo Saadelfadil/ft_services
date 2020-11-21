@@ -27,7 +27,6 @@ data:
       database = "$INFLUXDB_DB"
       username = "$INFLUXDB_USER"
       password = "$INFLUXDB_USER_PASSWORD"
-# Statsd Server
     [[inputs.statsd]]
       max_tcp_connections = 250
       tcp_keep_alive = false
@@ -47,7 +46,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: monitoring
+  namespace: metallb
   name: telegraf
 spec:
   selector:

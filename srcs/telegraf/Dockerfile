@@ -14,4 +14,6 @@ RUN     tar -xzf telegraf-1.13.3-static_linux_amd64.tar.gz && \
 
 COPY start.sh /
 
+EXPOSE 8125
+
 CMD  sh start.sh
