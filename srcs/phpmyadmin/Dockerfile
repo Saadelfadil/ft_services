@@ -1,21 +1,21 @@
 FROM alpine:latest
 
 RUN apk update \
-&& apk add wget supervisor \
-&& apk add tar \
 && apk add nginx \
 && mkdir /run/nginx
+RUN   apk update \
+&&    apk add curl \
+&&    apk add gnupg \
+&&    apk add dpkg \
+&&    apk add supervisor
 COPY  nginx-selfsigned.crt /etc/ssl
 COPY  nginx-selfsigned.key /etc/ssl
 COPY nginx.conf /etc/nginx/
-COPY  pma.sh /
 COPY supervisord.conf /
 
+COPY  pma.sh /
+RUN   sh pma.sh
+
 EXPOSE 5000
-
-
-RUN sh pma.sh
-
-
 
 ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/supervisord.conf"]
