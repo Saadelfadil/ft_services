@@ -6,7 +6,7 @@ metadata:
     app: influxdb
 spec:
   type: ClusterIP
-  clusterIP: 10.96.0.51
+  clusterIP: 10.96.0.55
   ports:
     - port: 8086
       targetPort: 8086
@@ -49,50 +49,53 @@ spec:
         - name: influxdb
           image: influxdb
           imagePullPolicy: Never
-          env:
-            - name: INFLUXDB_DB
-              value: influxdb-database
-            - name:  INFLUXDB_USER
-              value: admin
-            - name: INFLUXDB_USER_PASSWORD
-              value: admin
-            - name: INFLUXDB_HOST
+          # env:
+          #   - name: INFLUXDB_DB
+          #     value: influxdb
+          #   - name:  INFLUXDB_USER
+          #     value: admin
+          #   - name: INFLUXDB_USER_PASSWORD
+          #     value: admin
+          #   - name: INFLUXDB_HOST
           ports:
             - containerPort: 8086
               name: influxdb
           volumeMounts:
-            - name: influxdb-pv
-              mountPath: /var/lib/influxdb
-            - mountPath: /var/run/docker.sock
+            - mountPath: "/var/lib/influxdb/data"
+              name: influxdb-pv
+            - mountPath: "/var/run/docker.sock"
               name: docker-sock
       volumes:
         - name: influxdb-pv
           persistentVolumeClaim:
             claimName: influxdb-pv-claim
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
 
----
+# ---
 
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: telegraf-config
-data:
-  telegraf.conf: |+
-    [[outputs.influxdb]]
-      urls = ["$INFLUXDB_URL"]
-      database = "$INFLUXDB_DB"
-      username = "$INFLUXDB_USER"
-      password = "$INFLUXDB_USER_PASSWORD"
-    [[inputs.statsd]]
-      max_tcp_connections = 250
-      tcp_keep_alive = false
-      service_address = ":8125"
-      delete_gauges = true
-      delete_counters = true
-      delete_sets = true
-      delete_timings = true
-      metric_separator = "."
-      allowed_pending_messages = 10000
-      percentile_limit = 1000
-      parse_data_dog_tags = true 
-      read_buffer_size = 65535
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: telegraf-config
+# data:
+#   telegraf.conf: |+
+#     [[outputs.influxdb]]
+#       urls = ["$INFLUXDB_URL"]
+#       database = "$INFLUXDB_DB"
+#       username = "$INFLUXDB_USER"
+#       password = "$INFLUXDB_USER_PASSWORD"
+#     [[inputs.statsd]]
+#       max_tcp_connections = 250
+#       tcp_keep_alive = false
+#       service_address = ":8125"
+#       delete_gauges = true
+#       delete_counters = true
+#       delete_sets = true
+#       delete_timings = true
+#       metric_separator = "."
+#       allowed_pending_messages = 10000
+#       percentile_limit = 1000
+#       parse_data_dog_tags = true 
+#       read_buffer_size = 65535

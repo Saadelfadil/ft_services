@@ -1,6 +1,7 @@
 !/bin/sh
-influxd run &
-influx -execute "create database telegraf"
-influx -execute "create user telegraf with password 'telegraf' with all privileges"
+# influxd run -config /influxdb.conf &
+influxd &
+# influx -execute "create database influxdb"
+influx -execute "create user admin with password 'admin' with all privileges"
 exec /usr/bin/telegraf
 tail -F /dev/null

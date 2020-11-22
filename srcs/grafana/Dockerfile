@@ -25,7 +25,7 @@ RUN tar -xzf grafana-7.0.5.linux-amd64.tar.gz && \
         rm -f /grafana/conf/*.ini grafana-7.0.5.linux-amd64.tar.gz && \
         apk del .build-deps
 
-COPY defaults.ini /grafana/conf/
+COPY grafana.ini /grafana/conf/defaut.ini
 
 EXPOSE 3000
 
