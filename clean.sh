@@ -30,3 +30,14 @@ echo "${Cyan}-----------------------------Phpmyadmin ---------------------------
 kubectl delete deployment/phpmyadmin
 kubectl delete service/phpmyadmin
 echo "\n"
+echo "${Cyan}-------------------------- influxdb -----------------------------${Color_Off}"
+kubectl delete deploy influxdb
+kubectl delete service influxdb
+kubectl delete persistentvolumeclaims influxdb-pv-claim
+echo "\n"
+echo "${Cyan}-------------------------- grafana -----------------------------${Color_Off}"
+kubectl delete deploy grafana
+kubectl delete service grafana
+kubectl delete persistentvolumeclaims grafana-pv-claim
+kubectl delete persistentvolume/garfana-pv-volume
+echo "\n"

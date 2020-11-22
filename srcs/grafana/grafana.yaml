@@ -28,6 +28,22 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: garfana-pv-volume
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data"
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata: 

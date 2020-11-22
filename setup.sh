@@ -30,12 +30,20 @@ kubectl create -f srcs/mysql/mysql.yaml
 echo "\n"
 
 echo "${Blue}------------------------- Phpmyadmin -----------------------------${Color_Off}"
-docker build -t pma srcs/phpmyadmin
+docker build -t phpmyadmin srcs/phpmyadmin
 kubectl create -f srcs/phpmyadmin/phpmyadmin.yaml
 echo "\n"
 
 echo "${Yellow}-------------------------- Wordpress -----------------------------${Color_Off}"
-docker build --tag wp srcs/wordpress
+docker build --tag wordpress srcs/wordpress
 kubectl create -f srcs/wordpress/wordpress.yaml
+echo "\n"
+echo "${Red}-------------------------- influxdb -----------------------------${Color_Off}"
+docker build --tag influxdb srcs/influxDB
+kubectl create -f srcs/influxDB/influxdb.yaml
+echo "\n"
+echo "${Red}-------------------------- grafana -----------------------------${Color_Off}"
+docker build --tag grafana srcs/grafana
+kubectl create -f srcs/grafana/grafana.yaml
 echo "\n"
 minikube dashboard

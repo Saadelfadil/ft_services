@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: phpmyadmin
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
   labels:
     app: phpmyadmin
 spec:
@@ -15,7 +17,7 @@ spec:
     spec:
       containers:
         - name: phpmyadmin
-          image: pma
+          image: phpmyadmin
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
