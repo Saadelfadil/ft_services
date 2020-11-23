@@ -14,8 +14,9 @@ COPY nginx.conf /etc/nginx/
 COPY supervisord.conf /
 
 COPY  pma.sh /
+COPY  config.inc.php /
 RUN   sh pma.sh
 
 EXPOSE 5000
 
-ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/supervisord.conf"]
+# ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/supervisord.conf"]
