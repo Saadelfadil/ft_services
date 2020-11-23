@@ -1,3 +1,4 @@
+#!/bin/bash
 # Colors
 Color_Off='\033[0m'       # Text Reset
 Black='\033[0;30m'        # Black

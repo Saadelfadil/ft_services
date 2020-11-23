@@ -1,3 +1,4 @@
+#!/bin/bash
 # Colors
 Color_Off='\033[0m'       # Text Reset
 Black='\033[0;30m'        # Black
@@ -13,6 +14,7 @@ minikube start --vm-driver virtualbox --memory 3000 --addons metrics-server --ex
 eval $(minikube docker-env)
 
 echo "${Purple}-------------------------- Metalllb ------------------------------${Color_Off}"
+sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/metallb.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"

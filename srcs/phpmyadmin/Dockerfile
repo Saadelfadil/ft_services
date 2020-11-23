@@ -19,4 +19,4 @@ RUN   sh pma.sh
 
 EXPOSE 5000
 
-# ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/supervisord.conf"]
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/supervisord.conf"]
