@@ -20,13 +20,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'sel_fadi_db' );
+define( 'DB_NAME', 'wordpress' );
 
 /** MySQL database username */
-define( 'DB_USER', 'sel_fadi' );
+define( 'DB_USER', 'admin' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'sel_fadi' );
+define( 'DB_PASSWORD', 'admin' );
 
 /** MySQL hostname */
 define( 'DB_HOST', '10.96.0.50' );

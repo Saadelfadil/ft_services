@@ -12,10 +12,11 @@ mysql_install_db --user=mysql --datadir=/app/mysql
 pkill mysql
 pkill mysqld
 service mariadb restart
-echo "CREATE USER IF NOT EXISTS 'admin' IDENTIFIED BY 'admin';" | mysql -uroot
-echo "CREATE DATABASE sel_fadi_db;" | mysql -uroot
-echo "grant all privileges on *.* TO 'admin' identified by 'admin';" | mysql -uroot
+echo "CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY 'admin';" | mysql -uroot
+echo "CREATE DATABASE wordpress;" | mysql -uroot
+echo "grant all privileges on *.* TO 'admin'@'%' identified by 'admin';" | mysql -uroot
 echo "flush privileges;" | mysql -uroot
+echo "------------------------------------"
 mysql -u root < phpmyadmin.sql
 # mysql < wordpress.sql
 rc-service mariadb restart

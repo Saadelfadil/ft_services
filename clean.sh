@@ -19,7 +19,7 @@ echo "${Cyan}------------------------------- Mysql -----------------------------
 kubectl delete deployment/mysql
 kubectl delete services/mysql
 kubectl delete pvc/mysql-pv-claim
-kubectl delete pvc/mysql-pv-volume
+kubectl delete pv/mysql-pv-volume
 echo "\n"
 
 echo "${Cyan}------------------------------ Wordpress ----------------------------------------${Color_Off}"
