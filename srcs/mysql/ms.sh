@@ -18,7 +18,7 @@ echo "grant all privileges on *.* TO 'admin'@'%' identified by 'admin';" | mysql
 echo "flush privileges;" | mysql -uroot
 echo "------------------------------------"
 mysql -u root < phpmyadmin.sql
-# mysql < wordpress.sql
+mysql -u root < wordpress.sql
 rc-service mariadb restart
 mysql -u root
 tail -F /dev/null

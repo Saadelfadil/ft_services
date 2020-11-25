@@ -10,42 +10,41 @@ Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
 White='\033[0;37m'        # White
 
+echo -e "${Purple}-------------------------- Metalllb && minikube ------------------------------${Color_Off}"
 minikube start --vm-driver virtualbox --memory 3000 --addons metrics-server --extra-config=apiserver.service-node-port-range=80-65000
 eval $(minikube docker-env)
-
-echo "${Purple}-------------------------- Metalllb ------------------------------${Color_Off}"
 sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/metallb.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 kubectl create -f srcs/metallb.yaml
-echo "\n"
+echo -e "\n"
 
-echo "${Green}----------------------------- Nginx ------------------------------${Color_Off}"
+echo -e "${Green}----------------------------- Nginx ------------------------------${Color_Off}"
 docker build --tag nginx srcs/nginx
 kubectl create -f srcs/nginx/nginx.yaml
-echo "\n"
+echo -e "\n"
 
 echo "${Cyan}--------------------------- Mysql --------------------------------${Color_Off}"
 docker build --tag mysql srcs/mysql 
 kubectl create -f srcs/mysql/mysql.yaml
-echo "\n"
+echo -e "\n"
 
 echo "${Blue}------------------------- Phpmyadmin -----------------------------${Color_Off}"
 docker build -t phpmyadmin srcs/phpmyadmin
 kubectl create -f srcs/phpmyadmin/phpmyadmin.yaml
-echo "\n"
+echo -e "\n"
 
-echo "${Yellow}-------------------------- Wordpress -----------------------------${Color_Off}"
+echo -e "${Yellow}-------------------------- Wordpress -----------------------------${Color_Off}"
 docker build --tag wordpress srcs/wordpress
 kubectl create -f srcs/wordpress/wordpress.yaml
-echo "\n"
-echo "${Red}-------------------------- influxdb -----------------------------${Color_Off}"
+echo -e "\n"
+echo -e "${Red}-------------------------- influxdb -----------------------------${Color_Off}"
 docker build --tag influxdb srcs/influxDB
 kubectl create -f srcs/influxDB/influxdb.yaml
-echo "\n"
-echo "${Red}-------------------------- grafana -----------------------------${Color_Off}"
+echo -e "\n"
+echo -e "${Red}-------------------------- grafana -----------------------------${Color_Off}"
 docker build --tag grafana srcs/grafana
 kubectl create -f srcs/grafana/grafana.yaml
-echo "\n"
+echo -e "\n"
 minikube dashboard

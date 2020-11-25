@@ -12,7 +12,7 @@ COPY  nginx-selfsigned.crt /etc/ssl
 COPY  nginx-selfsigned.key /etc/ssl
 COPY nginx.conf /etc/nginx/
 COPY supervisord.conf /
-COPY wp-config.php /www
+COPY wp-config.php /
 COPY  wp.sh /
 RUN   sh wp.sh
 
