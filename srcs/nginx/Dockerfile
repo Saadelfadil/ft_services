@@ -1,12 +1,14 @@
 FROM alpine:latest
 RUN apk update \
-&& apk add nginx \
-&& mkdir /run/nginx \
-&& echo "<h1>Hello world!</h1>" > /var/www/localhost/htdocs/index.html;
-RUN chmod +r /var/www/localhost/htdocs/index.html
-COPY  nginx-selfsigned.crt /etc/ssl 
-COPY  nginx-selfsigned.key /etc/ssl
-ADD default.conf /etc/nginx/conf.d/default.conf
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+&& apk add nginx
+RUN apk add openrc
+RUN apk add openssl
+RUN apk add openssh
+RUN apk add --no-cache su-exec
+ADD nginx.sh /
+ADD index.html /
+COPY  nginx-selfsigned.crt / 
+COPY  nginx-selfsigned.key /
+ADD nginx.conf /
 EXPOSE 80 443 22
-ENTRYPOINT ["nginx"]
+ENTRYPOINT ["sh", "nginx.sh"]

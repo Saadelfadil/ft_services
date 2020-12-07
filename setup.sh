@@ -14,6 +14,7 @@ echo -e "${Purple}-------------------------- Metalllb && minikube --------------
 minikube start --vm-driver virtualbox --memory 3000 --addons metrics-server --extra-config=apiserver.service-node-port-range=80-65000
 eval $(minikube docker-env)
 sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/metallb.yaml
+sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/nginx/nginx.conf
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
@@ -43,7 +44,7 @@ echo -e "${Red}-------------------------- influxdb -----------------------------
 docker build --tag influxdb srcs/influxDB
 kubectl create -f srcs/influxDB/influxdb.yaml
 echo -e "\n"
-echo -e "${Red}-------------------------- grafana -----------------------------${Color_Off}"
+echo -e "${White}-------------------------- grafana -----------------------------${Color_Off}"
 docker build --tag grafana srcs/grafana
 kubectl create -f srcs/grafana/grafana.yaml
 echo -e "\n"
