@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftps
+  labels:
+    app: ftps
+spec:
+  selector:
+    matchLabels:
+      app: ftps
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ftps
+    spec:
+      containers:
+      - name: ftps
+        image: ftps
+        imagePullPolicy: Never
+        env:
+        - name: USER
+          value: admin
+        - name: PASSWORD
+          value: admin
+        ports:
+        - containerPort: 21
+          hostPort: 21
+        - containerPort: 30000
+          hostPort: 30000
+        - containerPort: 30001
+          hostPort: 30001
+        volumeMounts:
+        - name: ftps-persistent-storage
+          mountPath: /ftps
+      volumes:
+        - name: ftps-persistent-storage
+          persistentVolumeClaim:
+            claimName: ftps-pv-claim
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
+  name: ftps
+  labels:
+    app: ftps
+spec:
+  ports:
+  - port: 21
+    protocol: TCP
+    name: ftps
+    targetPort: 21
+  - port: 30000
+    protocol: TCP
+    name: ftps1
+    targetPort: 30000
+  - port: 30001
+    protocol: TCP
+    name: ftps2
+    targetPort: 30001
+  selector:
+    app: ftps
+  type: LoadBalancer
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ftps-pv-claim
+  labels:
+    app: ftps-app
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+
