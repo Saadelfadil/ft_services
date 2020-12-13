@@ -14,7 +14,7 @@ RUN     tar -xzf telegraf-1.13.3-static_linux_amd64.tar.gz && \
 ADD influxdb.conf /
 COPY telegraf.conf /etc/telegraf/telegraf.conf
 
-EXPOSE 8086
 COPY    start.sh /
+EXPOSE 8086
 
 CMD     sh start.sh

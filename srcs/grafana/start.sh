@@ -1,17 +1,8 @@
-#!/bin/bash
-
-# exec su-exec grafana grafana-server  						\
-#   --homepath="$GF_PATHS_HOME"                               \
-#   --config="$GF_PATHS_CONFIG"                               \
-#   --packaging=docker                                        \
-#   "$@"                                                      \
-#   cfg:default.log.mode="console"                            \
-#   cfg:default.paths.data="$GF_PATHS_DATA"                   \
-#   cfg:default.paths.logs="$GF_PATHS_LOGS"                   \
-#   cfg:default.paths.plugins="$GF_PATHS_PLUGINS"             \
-#   cfg:default.paths.provisioning="$GF_PATHS_PROVISIONING"
-#   tail -F /dev/null
-
-
 chown -R grafana:grafana /grafana
 exec su-exec grafana /usr/bin/grafana-server --homepath=/grafana
+
+# influxd run -config /influxdb.conf &
+# infulx -execute "create database telegraf"
+# influx -execute "create user telegraf with password 'telegraf' with all privileges"
+# exec /usr/bin/telegraf $@
+# tail -F /dev/null

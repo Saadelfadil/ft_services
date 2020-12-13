@@ -11,6 +11,7 @@ RUN   apk update \
 COPY  nginx-selfsigned.crt /etc/ssl
 COPY  nginx-selfsigned.key /etc/ssl
 COPY nginx.conf /etc/nginx/
+# COPY telegraf.conf /etc/telegraf/telegraf.conf
 COPY supervisord.conf /
 
 COPY  pma.sh /

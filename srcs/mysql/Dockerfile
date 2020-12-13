@@ -5,6 +5,6 @@ RUN apk add mysql mysql-client
 COPY my.cnf /etc/mysql/my.cnf
 COPY my.cnf /etc/my.cnf
 COPY ms.sh /
-
+COPY telegraf.conf /etc/telegraf/telegraf.conf
 EXPOSE 3306
 ENTRYPOINT ["sh","ms.sh"]

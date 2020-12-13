@@ -13,6 +13,7 @@ COPY  nginx-selfsigned.key /etc/ssl
 COPY nginx.conf /etc/nginx/
 COPY supervisord.conf /
 COPY wp-config.php /
+# COPY telegraf.conf /etc/telegraf/telegraf.conf
 COPY  wp.sh /
 RUN   sh wp.sh
 

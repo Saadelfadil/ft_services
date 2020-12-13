@@ -47,7 +47,8 @@ $cfg['Servers'][$i]['export_templates']  = 'pma__export_templates';
 
 /* End of servers configuration */
 
-$cfg['blowfish_secret'] = 'oJ}"`=kAG%>tSziVLyfR0I?A$o|5"';
+// $cfg['blowfish_secret'] = 'oJ}"`=kAG%>tSziVLyfR0I?A$o|5"';
+$cfg['blowfish_secret'] = 'fgfghhfgfrkrjhekguykjgyhcjhk jft,,bhjrgrhjvhmnfgjfdg jhki jf';
 $cfg['DefaultLang'] = 'en';
 $cfg['ServerDefault'] = 1;
 $cfg['UploadDir'] = '';

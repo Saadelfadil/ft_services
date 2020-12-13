@@ -37,7 +37,7 @@ spec:
             app: nginx
       spec:
          containers:
-         - name: nginx-containers
+         - name: nginx
            image: nginx
            imagePullPolicy: Never
            ports:

@@ -31,13 +31,13 @@ kubectl create -f srcs/nginx/nginx.yaml
 echo -e "\n"
 
 
-echo "${Cyan}--------------------------- Mysql --------------------------------${Color_Off}"
+echo -e "${Cyan}--------------------------- Mysql --------------------------------${Color_Off}"
 docker build --tag mysql srcs/mysql 
 kubectl create -f srcs/mysql/mysql.yaml
 echo -e "\n"
 
 
-echo "${Blue}------------------------- Phpmyadmin -----------------------------${Color_Off}"
+echo -e "${Blue}------------------------- Phpmyadmin -----------------------------${Color_Off}"
 docker build -t phpmyadmin srcs/phpmyadmin
 kubectl create -f srcs/phpmyadmin/phpmyadmin.yaml
 echo -e "\n"
@@ -60,5 +60,9 @@ docker build --tag grafana srcs/grafana
 kubectl create -f srcs/grafana/grafana.yaml
 echo -e "\n"
 
+echo -e "${White}-------------------------- ftps -----------------------------${Color_Off}"
+docker build --tag ftps srcs/ftps
+kubectl create -f srcs/ftps/ftps.yaml
+echo -e "\n"
 
 minikube dashboard
