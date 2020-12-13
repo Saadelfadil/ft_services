@@ -8,12 +8,11 @@ RUN   apk update \
 &&    apk add gnupg \
 &&    apk add dpkg \
 &&    apk add supervisor
-COPY  nginx-selfsigned.crt /etc/ssl
-COPY  nginx-selfsigned.key /etc/ssl
+COPY  nginx-selfsigned.crt /
+COPY  nginx-selfsigned.key /
 COPY nginx.conf /etc/nginx/
 COPY supervisord.conf /
 COPY wp-config.php /
-# COPY telegraf.conf /etc/telegraf/telegraf.conf
 COPY  wp.sh /
 RUN   sh wp.sh
 
