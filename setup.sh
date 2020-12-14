@@ -34,8 +34,9 @@ echo -e "\n"
 
 
 echo -e "${Cyan}--------------------------- Mysql --------------------------------${Color_Off}"
-docker build --tag mysql srcs/mysql 
+docker build --tag mysql srcs/mysql
 kubectl create -f srcs/mysql/mysql.yaml
+# kubectl exec -i $(kubectl get pods | grep "mysql*") -- sh /ms.sh
 echo -e "\n"
 
 
@@ -52,19 +53,19 @@ echo -e "\n"
 
 
 echo -e "${Red}-------------------------- influxdb -----------------------------${Color_Off}"
-docker build --tag influxdb srcs/influxDB
-kubectl create -f srcs/influxDB/influxdb.yaml
+# docker build --tag influxdb srcs/influxDB
+# kubectl create -f srcs/influxDB/influxdb.yaml
 echo -e "\n"
 
 
 echo -e "${White}-------------------------- grafana -----------------------------${Color_Off}"
-docker build --tag grafana srcs/grafana
-kubectl create -f srcs/grafana/grafana.yaml
+# docker build --tag grafana srcs/grafana
+# kubectl create -f srcs/grafana/grafana.yaml
 echo -e "\n"
 
 echo -e "${White}-------------------------- ftps -----------------------------${Color_Off}"
-docker build --tag ftps srcs/ftps
-kubectl create -f srcs/ftps/ftps.yaml
+# docker build --tag ftps srcs/ftps
+# kubectl create -f srcs/ftps/ftps.yaml
 echo -e "\n"
 
 minikube dashboard

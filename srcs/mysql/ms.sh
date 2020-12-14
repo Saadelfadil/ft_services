@@ -7,7 +7,7 @@ mkdir -p /run/mysqld
 chown -R mysql:mysql /app/mysql
 
 
-mysql_install_db --user=mysql --datadir=/app/mysql
+mysql_install_db --user=mysql --datadir=/var/lib/mysql
 /etc/init.d/mariadb setup
 pkill mysql
 pkill mysqld
