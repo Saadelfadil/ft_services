@@ -10,42 +10,42 @@ Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
 White='\033[0;37m'        # White
 
-echo -e "${Cyan}-------------------------------- Nginx ------------------------------------------${Color_Off}"
+echo -e "${Yellow}-------------------------------- Nginx ------------------------------------------${Color_Off}"
 kubectl delete deployment nginx
 kubectl delete services nginx
 echo  -e "\n"
 
-echo -e "${Cyan}------------------------------- Mysql -------------------------------------------${Color_Off}"
+echo -e "${Yellow}------------------------------- Mysql -------------------------------------------${Color_Off}"
 kubectl delete deployment/mysql
 kubectl delete services/mysql
 kubectl delete pvc/mysql-pv-claim
 kubectl delete pv/mysql-pv-volume
 echo -e "\n"
 
-echo "${Cyan}------------------------------ Wordpress ----------------------------------------${Color_Off}"
+echo -e  "${Yellow}------------------------------ Wordpress ----------------------------------------${Color_Off}"
 kubectl delete deployment/wordpress
 kubectl delete services wordpress
 echo -e "\n"
 
-echo -e "${Cyan}-----------------------------Phpmyadmin ----------------------------------------${Color_Off}"
+echo -e "${Yellow}-----------------------------Phpmyadmin ----------------------------------------${Color_Off}"
 kubectl delete deployment/phpmyadmin
 kubectl delete service/phpmyadmin
 echo -e "\n"
 
-echo -e "${Cyan}-------------------------- influxdb -----------------------------${Color_Off}"
+echo -e "${Yellow}-------------------------- influxdb -----------------------------${Color_Off}"
 kubectl delete deploy influxdb
 kubectl delete service influxdb
 kubectl delete persistentvolumeclaims influxdb-pv-claim
 echo -e "\n"
 
-echo -e "${Cyan}-------------------------- grafana -----------------------------${Color_Off}"
+echo -e "${Yellow}-------------------------- grafana -----------------------------${Color_Off}"
 kubectl delete deploy grafana
 kubectl delete service grafana
 kubectl delete persistentvolumeclaims grafana-pv-claim
 kubectl delete persistentvolume/garfana-pv-volume
 echo -e "\n"
 
-echo -e "${Cyan}-------------------------- ftps -----------------------------${Color_Off}"
+echo -e "${Yellow}-------------------------- ftps -----------------------------${Color_Off}"
 kubectl delete deploy ftps
 kubectl delete service ftps
 kubectl delete persistentvolumeclaims ftps-pv-claim

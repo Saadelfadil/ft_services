@@ -1,4 +1,5 @@
 adduser -D  www
+echo "admin:admin" | chpasswd
 mkdir /www
 chown -R u+wrx /var/lib/nginx
 chown -R u+wrx /www

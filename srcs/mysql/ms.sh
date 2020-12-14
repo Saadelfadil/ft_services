@@ -15,7 +15,7 @@ service mariadb restart
 echo "CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY 'admin';" | mysql -uroot
 echo "CREATE DATABASE wordpress;" | mysql -uroot
 echo "grant all privileges on *.* TO 'admin'@'%' identified by 'admin';" | mysql -uroot
-echo "flush privileges;" | mysql -uroot
+echo "  use wordpress ; source /wordpress.sql ;flush privileges;" | mysql -uroot
 mysql -u root < phpmyadmin.sql
 mysql -u root < wordpress.sql
 rc-service mariadb restart
