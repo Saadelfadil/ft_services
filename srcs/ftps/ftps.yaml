@@ -17,6 +17,13 @@ spec:
     spec:
       containers:
       - name: ftps
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - /health.sh
+          initialDelaySeconds: 20
+          periodSeconds: 5
         image: ftps
         imagePullPolicy: Never
         env:
@@ -29,8 +36,24 @@ spec:
           hostPort: 21
         - containerPort: 30000
           hostPort: 30000
-        - containerPort: 30001
-          hostPort: 30001
+        - containerPort: 30002
+          hostPort: 30002
+        - containerPort: 30003
+          hostPort: 30003
+        - containerPort: 30004
+          hostPort: 30004
+        - containerPort: 30005
+          hostPort: 30005
+        - containerPort: 30006
+          hostPort: 30006
+        - containerPort: 30007
+          hostPort: 30007
+        - containerPort: 30008
+          hostPort: 30008
+        - containerPort: 30009
+          hostPort: 30009
+        - containerPort: 30010
+          hostPort: 30010
         volumeMounts:
         - name: ftps-persistent-storage
           mountPath: /ftps
@@ -63,6 +86,42 @@ spec:
     protocol: TCP
     name: ftps2
     targetPort: 30001
+  - port: 30002
+    protocol: TCP
+    name: ftps2
+    targetPort: 30002
+  - port: 30003
+    protocol: TCP
+    name: ftps2
+    targetPort: 30003
+  - port: 30004
+    protocol: TCP
+    name: ftps2
+    targetPort: 30004
+  - port: 30005
+    protocol: TCP
+    name: ftps2
+    targetPort: 30005
+  - port: 30006
+    protocol: TCP
+    name: ftps2
+    targetPort: 30006
+  - port: 30007
+    protocol: TCP
+    name: ftps2
+    targetPort: 30007
+  - port: 30008
+    protocol: TCP
+    name: ftps2
+    targetPort: 30008
+  - port: 30009
+    protocol: TCP
+    name: ftps2
+    targetPort: 30009
+  - port: 30010
+    protocol: TCP
+    name: ftps2
+    targetPort: 30010
   selector:
     app: ftps
   type: LoadBalancer

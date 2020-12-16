@@ -35,8 +35,6 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/data"
 
 ---
 
@@ -60,6 +58,13 @@ spec:
       restartPolicy: Always
       containers:
       - name: mysql
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - /health.sh
+          initialDelaySeconds: 20
+          periodSeconds: 5
         image: mysql
         imagePullPolicy: Never
         securityContext:
@@ -69,7 +74,7 @@ spec:
           containerPort: 3306
         volumeMounts:
         - name: mysql-persistent-storage
-          mountPath: "/var/lib/mysql"
+          mountPath: "/app/mysql"
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:

@@ -29,9 +29,16 @@ spec:
          labels:
             app: wordpress
       spec:
-         containers:
-         - name: wordpress
-           image: wordpress
-           imagePullPolicy: Never
-           ports:
-           - containerPort: 5050
+        containers:
+        - name: wordpress
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - /health.sh
+            initialDelaySeconds: 20
+            periodSeconds: 5
+          image: wordpress
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 5050

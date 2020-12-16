@@ -14,6 +14,10 @@ COPY phpmyadmin.sql /
 
 COPY wordpress.sql /
 
+COPY health.sh /
+
+VOLUME ["/var/lib/mysql"]
+
 EXPOSE 3306
 
 ENTRYPOINT ["sh","ms.sh"]

@@ -19,6 +19,8 @@ sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/nginx/nginx.conf
 sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/ftps/ftps.sh
 sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/mysql/wordpress.sql
 
+# minikube ssh 'sudo mkdir /data/mysql; sudo chmod 777 /data/mysql'
+
 # kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
 # kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
 # kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
@@ -36,7 +38,6 @@ echo -e "\n"
 echo -e "${Cyan}--------------------------- Mysql --------------------------------${Color_Off}"
 docker build --tag mysql srcs/mysql
 kubectl create -f srcs/mysql/mysql.yaml
-# kubectl exec -i $(kubectl get pods | grep "mysql*") -- sh /ms.sh
 echo -e "\n"
 
 

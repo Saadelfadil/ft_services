@@ -36,14 +36,21 @@ spec:
          labels:
             app: nginx
       spec:
-         containers:
-         - name: nginx
-           image: nginx
-           imagePullPolicy: Never
-           ports:
-           - containerPort: 80
-             name: http
-           - containerPort: 443
-             name: https
-           - containerPort: 22
-             name: ssh
+        containers:
+        - name: nginx
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - /health.sh
+            initialDelaySeconds: 20
+            periodSeconds: 5
+          image: nginx
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 80
+            name: http
+          - containerPort: 443
+            name: https
+          - containerPort: 22
+            name: ssh

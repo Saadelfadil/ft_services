@@ -46,6 +46,8 @@ COPY grafana.db /grafana/data/
 
 COPY  start.sh /
 
+COPY health.sh /
+
 COPY defaults.ini /grafana/conf/
 
 EXPOSE 3000

@@ -32,6 +32,13 @@ spec:
     spec:
       containers:
         - name: phpmyadmin
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - /health.sh
+            initialDelaySeconds: 20
+            periodSeconds: 5
           image: phpmyadmin
           imagePullPolicy: Never
           ports:
