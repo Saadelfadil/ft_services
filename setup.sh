@@ -19,11 +19,6 @@ sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/nginx/nginx.conf
 sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/ftps/ftps.sh
 sed -i '' s/MINIKUBE_IP/$(minikube ip)/g srcs/mysql/wordpress.sql
 
-# minikube ssh 'sudo mkdir /data/mysql; sudo chmod 777 /data/mysql'
-
-# kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
-# kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
-# kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 minikube addons enable metallb
 kubectl apply -f srcs/metallb.yaml
 echo -e "\n"
@@ -54,19 +49,19 @@ echo -e "\n"
 
 
 echo -e "${Red}-------------------------- influxdb -----------------------------${Color_Off}"
-# docker build --tag influxdb srcs/influxDB
-# kubectl create -f srcs/influxDB/influxdb.yaml
+docker build --tag influxdb srcs/influxDB
+kubectl create -f srcs/influxDB/influxdb.yaml
 echo -e "\n"
 
 
 echo -e "${White}-------------------------- grafana -----------------------------${Color_Off}"
-# docker build --tag grafana srcs/grafana
-# kubectl create -f srcs/grafana/grafana.yaml
+docker build --tag grafana srcs/grafana
+kubectl create -f srcs/grafana/grafana.yaml
 echo -e "\n"
 
 echo -e "${White}-------------------------- ftps -----------------------------${Color_Off}"
-# docker build --tag ftps srcs/ftps
-# kubectl create -f srcs/ftps/ftps.yaml
+docker build --tag ftps srcs/ftps
+kubectl create -f srcs/ftps/ftps.yaml
 echo -e "\n"
 
 minikube dashboard

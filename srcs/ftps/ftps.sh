@@ -5,5 +5,5 @@ chmod 600 /etc/ssl/private/pure-ftpd.pem
 
 adduser -D admin
 echo "admin:admin" | chpasswd
-/usr/sbin/pure-ftpd -j -Y 2  -p 30000:30000 -p 30001:30001 -P "192.168.99.224"
+/usr/sbin/pure-ftpd -j -Y 2  -p 30000:30000 -p 30001:30001 -P "MINIKUBE_IP"
 # exec /usr/bin/telegraf
