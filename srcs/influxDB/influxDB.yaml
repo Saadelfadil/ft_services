@@ -46,7 +46,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-        - name: influxdb
+        - name: influxDB
           livenessProbe:
             exec:
               command:
@@ -54,11 +54,11 @@ spec:
               - /health.sh
             initialDelaySeconds: 20
             periodSeconds: 5
-          image: influxdb
+          image: influxDB
           imagePullPolicy: Never
           ports:
             - containerPort: 8086
-              name: influxdb
+              name: influxDB
           volumeMounts:
             - mountPath: "/var/lib/influxdb/data"
               name: influxdb-pv

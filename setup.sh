@@ -49,7 +49,7 @@ echo -e "\n"
 
 
 echo -e "${Red}-------------------------- influxdb -----------------------------${Color_Off}"
-docker build --tag influxdb srcs/influxDB
+docker build --tag influxDB srcs/influxDB
 kubectl create -f srcs/influxDB/influxdb.yaml
 echo -e "\n"
 
