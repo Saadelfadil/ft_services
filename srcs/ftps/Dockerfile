@@ -12,6 +12,6 @@ ADD ftps.sh /
 
 COPY health.sh /
 
-EXPOSE 21 30000-30010
+EXPOSE 21 30000-30001
 
 ENTRYPOINT [ "sh", "ftps.sh" ]
